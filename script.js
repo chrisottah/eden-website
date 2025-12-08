@@ -1,4 +1,4 @@
-// Eden AI Website Script - Corrected Version
+// Edenhub Website Script
 
 // ======================
 // THEME TOGGLE FUNCTIONALITY
@@ -6,16 +6,14 @@
 const themeToggle = document.getElementById('themeToggle');
 const body = document.body;
 
-// Check for saved theme preference or prefer-color-scheme
 function getPreferredTheme() {
-    const savedTheme = localStorage.getItem('eden-theme');
+    const savedTheme = localStorage.getItem('edenhub-theme');
     if (savedTheme) {
         return savedTheme;
     }
     return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
 }
 
-// Apply theme
 function applyTheme(theme) {
     if (theme === 'dark') {
         body.classList.add('dark-mode');
@@ -24,33 +22,28 @@ function applyTheme(theme) {
         body.classList.add('light-mode');
         body.classList.remove('dark-mode');
     }
-    localStorage.setItem('eden-theme', theme);
+    localStorage.setItem('edenhub-theme', theme);
 }
 
-// Initialize theme
 const preferredTheme = getPreferredTheme();
 applyTheme(preferredTheme);
 
-// Toggle theme on button click
 themeToggle.addEventListener('click', () => {
     const isDarkMode = body.classList.contains('dark-mode');
     applyTheme(isDarkMode ? 'light' : 'dark');
 });
 
 // ======================
-// TYPING ANIMATION
+// HERO TYPING ANIMATION
 // ======================
 const typingText = document.getElementById('typingText');
-const typingCursor = document.querySelector('.typing-cursor');
-
-// Phrases to cycle through
 const typingPhrases = [
-    "Eden AI",
-    "Intelligent Coding",
-    "Real-time Debugging",
-    "AI Pair Programming",
-    "Code Optimization",
-    "Secure Development"
+    "One Intelligent Solution at a Time.",
+    "Ethical AI Solutions.",
+    "Human-Centered Technology.",
+    "Scalable Digital Innovation.",
+    "Responsible Automation.",
+    "Future-Ready Solutions."
 ];
 
 let currentPhraseIndex = 0;
@@ -64,21 +57,17 @@ function startTypingAnimation() {
     const currentPhrase = typingPhrases[currentPhraseIndex];
     
     if (!isDeleting && currentCharIndex < currentPhrase.length) {
-        // Typing forward
         typingText.textContent = currentPhrase.substring(0, currentCharIndex + 1);
         currentCharIndex++;
         setTimeout(startTypingAnimation, typingSpeed);
     } else if (!isDeleting && currentCharIndex === currentPhrase.length) {
-        // Finished typing, pause then start deleting
         isDeleting = true;
         setTimeout(startTypingAnimation, pauseDuration);
     } else if (isDeleting && currentCharIndex > 0) {
-        // Deleting text
         typingText.textContent = currentPhrase.substring(0, currentCharIndex - 1);
         currentCharIndex--;
         setTimeout(startTypingAnimation, deletingSpeed);
     } else {
-        // Finished deleting, move to next phrase
         isDeleting = false;
         currentPhraseIndex = (currentPhraseIndex + 1) % typingPhrases.length;
         setTimeout(startTypingAnimation, 500);
@@ -86,31 +75,66 @@ function startTypingAnimation() {
 }
 
 // ======================
-// CODE EDITOR ANIMATIONS
+// VALUES TYPING ANIMATION
 // ======================
-function animateCodeLines() {
-    const codeLines = document.querySelectorAll('.code-line');
-    codeLines.forEach((line, index) => {
-        // Reset
-        line.style.opacity = '0';
-        line.style.transform = 'translateX(-10px)';
+function initValuesTyping() {
+    const valueCards = document.querySelectorAll('.value-card');
+    let currentValueIndex = 0;
+    let isAnimating = false;
+    
+    function typeNextValue() {
+        if (isAnimating || currentValueIndex >= valueCards.length) return;
         
-        // Animate with delay
-        setTimeout(() => {
-            line.style.transition = 'opacity 0.3s ease, transform 0.3s ease';
-            line.style.opacity = '1';
-            line.style.transform = 'translateX(0)';
-        }, 100 * (index + 1) + 500);
-    });
+        isAnimating = true;
+        const card = valueCards[currentValueIndex];
+        const descriptionElement = card.querySelector('.value-description');
+        const text = descriptionElement.dataset.text;
+        let charIndex = 0;
+        
+        descriptionElement.textContent = '';
+        card.classList.remove('typing-done');
+        
+        function typeChar() {
+            if (charIndex < text.length) {
+                descriptionElement.textContent += text.charAt(charIndex);
+                charIndex++;
+                setTimeout(typeChar, 50);
+            } else {
+                card.classList.add('typing-done');
+                isAnimating = false;
+                currentValueIndex++;
+                if (currentValueIndex < valueCards.length) {
+                    setTimeout(typeNextValue, 300);
+                } else {
+                    // Reset and start over after pause
+                    setTimeout(() => {
+                        currentValueIndex = 0;
+                        valueCards.forEach(card => {
+                            card.classList.remove('typing-done');
+                            card.querySelector('.value-description').textContent = '';
+                        });
+                        setTimeout(typeNextValue, 1000);
+                    }, 3000);
+                }
+            }
+        }
+        
+        typeChar();
+    }
+    
+    // Start the animation
+    setTimeout(typeNextValue, 2000);
 }
 
 // ======================
-// FLOATING ELEMENTS
+// MESSAGE ANIMATIONS
 // ======================
-function initFloatingElements() {
-    const floatElements = document.querySelectorAll('.float-element');
-    floatElements.forEach((element, index) => {
-        element.style.animationDelay = `${index * 0.3}s`;
+function initMessageAnimations() {
+    const messages = document.querySelectorAll('.message');
+    messages.forEach((message, index) => {
+        setTimeout(() => {
+            message.style.animation = 'messageIn 0.5s ease forwards';
+        }, index * 300);
     });
 }
 
@@ -141,7 +165,6 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         if (targetElement) {
             e.preventDefault();
             
-            // Close mobile menu if open
             if (navLinks && navLinks.classList.contains('active')) {
                 navLinks.classList.remove('active');
                 if (menuToggle) {
@@ -174,10 +197,8 @@ if (navbar) {
         }
         
         if (currentScroll > lastScroll && currentScroll > 100) {
-            // Scrolling down
             navbar.style.transform = 'translateY(-100%)';
         } else {
-            // Scrolling up
             navbar.style.transform = 'translateY(0)';
             navbar.style.boxShadow = '0 4px 20px rgba(0, 0, 0, 0.1)';
         }
@@ -190,116 +211,109 @@ if (navbar) {
 // HOVER EFFECTS
 // ======================
 function initHoverEffects() {
-    // Product cards
-    document.querySelectorAll('.product-card').forEach(card => {
+    // Cards hover effects
+    document.querySelectorAll('.value-card, .service-card, .stat-card').forEach(card => {
         card.addEventListener('mouseenter', () => {
-            card.style.transform = 'translateY(-10px) scale(1.02)';
+            card.style.transform = 'translateY(-10px)';
         });
         
         card.addEventListener('mouseleave', () => {
-            card.style.transform = 'translateY(0) scale(1)';
+            card.style.transform = 'translateY(0)';
         });
     });
     
-    // Buttons ripple effect
-    document.querySelectorAll('.cta-button').forEach(button => {
-        button.addEventListener('click', function(e) {
-            // Only create ripple if not already rippling
-            if (this.querySelector('.ripple')) return;
-            
-            const ripple = document.createElement('span');
-            ripple.className = 'ripple';
-            
-            const rect = this.getBoundingClientRect();
-            const size = Math.max(rect.width, rect.height);
-            const x = e.clientX - rect.left - size / 2;
-            const y = e.clientY - rect.top - size / 2;
-            
-            ripple.style.cssText = `
-                position: absolute;
-                border-radius: 50%;
-                background: rgba(255, 255, 255, 0.6);
-                transform: scale(0);
-                animation: ripple 0.6s linear;
-                width: ${size}px;
-                height: ${size}px;
-                top: ${y}px;
-                left: ${x}px;
-                pointer-events: none;
-            `;
-            
-            this.appendChild(ripple);
-            
-            // Remove ripple after animation
-            setTimeout(() => {
-                ripple.remove();
-            }, 600);
+    // Social links hover effect
+    document.querySelectorAll('.social-link').forEach(link => {
+        link.addEventListener('mouseenter', function() {
+            this.style.transform = 'translateY(-3px) scale(1.1)';
+        });
+        
+        link.addEventListener('mouseleave', function() {
+            this.style.transform = 'translateY(0) scale(1)';
         });
     });
-}
-
-// ======================
-// RESPONSIVE BEHAVIOR
-// ======================
-function handleResponsive() {
-    const floatElements = document.querySelectorAll('.float-element');
-    if (window.innerWidth <= 768) {
-        floatElements.forEach(el => {
-            el.style.display = 'none';
-        });
-    } else {
-        floatElements.forEach(el => {
-            el.style.display = 'flex';
-        });
-    }
 }
 
 // ======================
 // INITIALIZE EVERYTHING
 // ======================
 document.addEventListener('DOMContentLoaded', () => {
-    console.log('%c🚀 Eden AI Website Loaded', 'color: #3b82f6; font-size: 16px; font-weight: bold;');
+    console.log('%c🌱 Edenhub Website Loaded', 'color: #10b981; font-size: 16px; font-weight: bold;');
     
     // Start animations
     setTimeout(startTypingAnimation, 1000);
-    animateCodeLines();
-    initFloatingElements();
+    setTimeout(initValuesTyping, 1500);
+    setTimeout(initMessageAnimations, 2000);
     initHoverEffects();
-    handleResponsive();
     
-    // Add CSS for ripple effect
-    const rippleStyle = document.createElement('style');
-    rippleStyle.textContent = `
-        @keyframes ripple {
-            to {
-                transform: scale(4);
-                opacity: 0;
-            }
-        }
-        
+    // Add CSS animations
+    const styleSheet = document.createElement('style');
+    styleSheet.textContent = `
         @keyframes blink {
             0%, 100% { opacity: 1; }
             50% { opacity: 0; }
         }
+        
+        @keyframes floatNode {
+            0%, 100% { transform: translateY(0) rotate(0deg); }
+            50% { transform: translateY(-20px) rotate(5deg); }
+        }
+        
+        @keyframes messageIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        @keyframes scroll {
+            0% { transform: translateY(0); opacity: 1; }
+            100% { transform: translateY(20px); opacity: 0; }
+        }
     `;
-    document.head.appendChild(rippleStyle);
+    document.head.appendChild(styleSheet);
 });
 
-// Handle window resize
-window.addEventListener('resize', handleResponsive);
+// ======================
+// RESPONSIVE BEHAVIOR
+// ======================
+function handleResponsive() {
+    // Hide AI nodes on mobile
+    const aiNodes = document.querySelectorAll('.ai-node');
+    if (window.innerWidth <= 480) {
+        aiNodes.forEach(node => {
+            node.style.display = 'none';
+        });
+    } else {
+        aiNodes.forEach(node => {
+            node.style.display = 'flex';
+        });
+    }
+}
 
-// Handle visibility change (pause animations when tab not active)
+window.addEventListener('resize', handleResponsive);
+document.addEventListener('DOMContentLoaded', handleResponsive);
+
+// ======================
+// PERFORMANCE OPTIMIZATION
+// ======================
 document.addEventListener('visibilitychange', () => {
-    if (typingCursor) {
-        if (document.hidden) {
+    if (document.hidden) {
+        // Pause animations when tab not active
+        const typingCursor = document.querySelector('.typing-cursor');
+        if (typingCursor) {
             typingCursor.style.animationPlayState = 'paused';
-        } else {
+        }
+    } else {
+        // Resume animations when tab becomes active
+        const typingCursor = document.querySelector('.typing-cursor');
+        if (typingCursor) {
             typingCursor.style.animationPlayState = 'running';
         }
     }
 });
 
-// Add keyboard shortcuts
+// ======================
+// KEYBOARD SHORTCUTS
+// ======================
 document.addEventListener('keydown', (e) => {
     // Toggle theme with Alt/Option + T
     if ((e.altKey || e.metaKey) && e.key === 't') {
@@ -316,57 +330,9 @@ document.addEventListener('keydown', (e) => {
     }
 });
 
-// Particle background effect (optional)
-function createParticles() {
-    const hero = document.querySelector('.hero');
-    if (!hero) return;
-    
-    // Remove existing particles
-    document.querySelectorAll('.particle').forEach(p => p.remove());
-    
-    for (let i = 0; i < 15; i++) {
-        const particle = document.createElement('div');
-        particle.className = 'particle';
-        
-        // Random properties
-        const size = Math.random() * 3 + 1;
-        const posX = Math.random() * 100;
-        const posY = Math.random() * 100;
-        const duration = Math.random() * 20 + 10;
-        const delay = Math.random() * 5;
-        
-        particle.style.cssText = `
-            position: absolute;
-            width: ${size}px;
-            height: ${size}px;
-            left: ${posX}%;
-            top: ${posY}%;
-            background: var(--accent-blue-light);
-            opacity: 0.1;
-            border-radius: 50%;
-            pointer-events: none;
-            z-index: 1;
-            animation: floatParticle ${duration}s infinite ease-in-out ${delay}s;
-        `;
-        
-        hero.appendChild(particle);
-    }
-    
-    // Add particle animation to CSS
-    if (!document.querySelector('#particle-animation')) {
-        const particleAnimation = document.createElement('style');
-        particleAnimation.id = 'particle-animation';
-        particleAnimation.textContent = `
-            @keyframes floatParticle {
-                0%, 100% { transform: translate(0, 0); }
-                25% { transform: translate(20px, -20px); }
-                50% { transform: translate(-10px, -40px); }
-                75% { transform: translate(15px, -20px); }
-            }
-        `;
-        document.head.appendChild(particleAnimation);
-    }
-}
-
-// Uncomment to enable particles:
-// document.addEventListener('DOMContentLoaded', createParticles);
+// ======================
+// LOADING STATE
+// ======================
+window.addEventListener('load', () => {
+    document.body.classList.add('loaded');
+});
