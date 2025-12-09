@@ -30,12 +30,12 @@ body {
     --accent-blue: #3b82f6;
     --accent-blue-light: #60a5fa;
     --accent-blue-dark: #2563eb;
-    --accent-green: #10b981;
+    --accent-green: #60a5fa;
     --card-bg: #ffffff;
     --shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.05);
     --shadow-lg: 0 20px 40px -10px rgba(0, 0, 0, 0.08);
     --gradient: linear-gradient(135deg, #3b82f6 0%, #60a5fa 100%);
-    --gradient-green: linear-gradient(135deg, #10b981 0%, #34d399 100%);
+    --gradient-green: linear-gradient(135deg, #60a5fa 0%, #60a5fa 100%);
 }
 
 .dark-mode {
@@ -49,12 +49,12 @@ body {
     --accent-blue: #60a5fa;
     --accent-blue-light: #93c5fd;
     --accent-blue-dark: #3b82f6;
-    --accent-green: #34d399;
+    --accent-green: #60a5fa;
     --card-bg: #1e293b;
     --shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.3);
     --shadow-lg: 0 20px 40px -10px rgba(0, 0, 0, 0.4);
     --gradient: linear-gradient(135deg, #60a5fa 0%, #3b82f6 100%);
-    --gradient-green: linear-gradient(135deg, #34d399 0%, #10b981 100%);
+    --gradient-green: linear-gradient(135deg, #60a5fa 0%, #60a5fa 100%);
 }
 
 .container {
@@ -111,6 +111,16 @@ body {
 .logo-hub {
     color: var(--accent-green);
     font-weight: 900;
+}
+
+.logo-image {
+    height: 40px;  /* Control logo size here */
+    width: auto;   /* Maintain aspect ratio */
+    transition: all 0.3s ease;
+}
+
+.logo-with-image .logo-text {
+    display: none;
 }
 
 .nav-links {
@@ -937,7 +947,7 @@ section {
 
 .interface-dot.red { background: #ff5f57; }
 .interface-dot.yellow { background: #ffbd2e; }
-.interface-dot.green { background: #28ca42; }
+.interface-dot.green { background: #60a5fa; }
 
 .interface-title {
     font-weight: 600;
@@ -1230,7 +1240,7 @@ section {
 }
 
 .footer-credits .fa-heart {
-    color: #ff6b6b;
+    color: #60a5fa;
 }
 
 /* Animations */
