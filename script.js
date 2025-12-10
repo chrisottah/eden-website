@@ -1,4 +1,4 @@
-// Edenhub Website Script
+// Edenhub Website Script - Updated for Mobile & Animations
 
 // ======================
 // THEME TOGGLE FUNCTIONALITY
@@ -75,55 +75,32 @@ function startTypingAnimation() {
 }
 
 // ======================
-// VALUES TYPING ANIMATION
+// SCROLL ANIMATIONS
 // ======================
-function initValuesTyping() {
-    const valueCards = document.querySelectorAll('.value-card');
-    let currentValueIndex = 0;
-    let isAnimating = false;
+function initScrollAnimations() {
+    const animatedElements = document.querySelectorAll('.value-card, .service-card, .mission-card, .vision-card, .stat-card');
     
-    function typeNextValue() {
-        if (isAnimating || currentValueIndex >= valueCards.length) return;
-        
-        isAnimating = true;
-        const card = valueCards[currentValueIndex];
-        const descriptionElement = card.querySelector('.value-description');
-        const text = descriptionElement.dataset.text;
-        let charIndex = 0;
-        
-        descriptionElement.textContent = '';
-        card.classList.remove('typing-done');
-        
-        function typeChar() {
-            if (charIndex < text.length) {
-                descriptionElement.textContent += text.charAt(charIndex);
-                charIndex++;
-                setTimeout(typeChar, 50);
-            } else {
-                card.classList.add('typing-done');
-                isAnimating = false;
-                currentValueIndex++;
-                if (currentValueIndex < valueCards.length) {
-                    setTimeout(typeNextValue, 300);
-                } else {
-                    // Reset and start over after pause
-                    setTimeout(() => {
-                        currentValueIndex = 0;
-                        valueCards.forEach(card => {
-                            card.classList.remove('typing-done');
-                            card.querySelector('.value-description').textContent = '';
-                        });
-                        setTimeout(typeNextValue, 1000);
-                    }, 3000);
-                }
+    const observerOptions = {
+        threshold: 0.1,
+        rootMargin: '0px 0px -50px 0px'
+    };
+    
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.style.opacity = '1';
+                entry.target.style.transform = 'translateY(0)';
+                observer.unobserve(entry.target);
             }
-        }
-        
-        typeChar();
-    }
+        });
+    }, observerOptions);
     
-    // Start the animation
-    setTimeout(typeNextValue, 2000);
+    animatedElements.forEach(element => {
+        element.style.opacity = '0';
+        element.style.transform = 'translateY(20px)';
+        element.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+        observer.observe(element);
+    });
 }
 
 // ======================
@@ -144,93 +121,208 @@ function initMessageAnimations() {
 const menuToggle = document.getElementById('menuToggle');
 const navLinks = document.querySelector('.nav-links');
 
-if (menuToggle && navLinks) {
-    menuToggle.addEventListener('click', () => {
-        navLinks.classList.toggle('active');
-        menuToggle.innerHTML = navLinks.classList.contains('active') 
-            ? '<i class="fas fa-times"></i>' 
-            : '<i class="fas fa-bars"></i>';
-    });
+function initMobileMenu() {
+    if (menuToggle && navLinks) {
+        menuToggle.addEventListener('click', () => {
+            const isActive = navLinks.classList.contains('active');
+            navLinks.classList.toggle('active');
+            menuToggle.innerHTML = isActive 
+                ? '<i class="fas fa-bars"></i>' 
+                : '<i class="fas fa-times"></i>';
+            
+            // Prevent body scroll when menu is open on mobile
+            if (window.innerWidth <= 768) {
+                document.body.style.overflow = isActive ? '' : 'hidden';
+            }
+        });
+        
+        // Close menu when clicking outside
+        document.addEventListener('click', (e) => {
+            if (navLinks.classList.contains('active') && 
+                !navLinks.contains(e.target) && 
+                !menuToggle.contains(e.target)) {
+                navLinks.classList.remove('active');
+                menuToggle.innerHTML = '<i class="fas fa-bars"></i>';
+                document.body.style.overflow = '';
+            }
+        });
+        
+        // Close menu when clicking links
+        document.querySelectorAll('.nav-link').forEach(link => {
+            link.addEventListener('click', () => {
+                if (window.innerWidth <= 768) {
+                    navLinks.classList.remove('active');
+                    menuToggle.innerHTML = '<i class="fas fa-bars"></i>';
+                    document.body.style.overflow = '';
+                }
+            });
+        });
+    }
 }
 
 // ======================
 // SMOOTH SCROLL
 // ======================
-document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-    anchor.addEventListener('click', function (e) {
-        const targetId = this.getAttribute('href');
-        if (targetId === '#' || targetId === '#!') return;
-        
-        const targetElement = document.querySelector(targetId);
-        if (targetElement) {
-            e.preventDefault();
+function initSmoothScroll() {
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function (e) {
+            const targetId = this.getAttribute('href');
+            if (targetId === '#' || targetId === '#!') return;
             
-            if (navLinks && navLinks.classList.contains('active')) {
-                navLinks.classList.remove('active');
-                if (menuToggle) {
-                    menuToggle.innerHTML = '<i class="fas fa-bars"></i>';
+            const targetElement = document.querySelector(targetId);
+            if (targetElement) {
+                e.preventDefault();
+                
+                // Close mobile menu if open
+                if (navLinks && navLinks.classList.contains('active')) {
+                    navLinks.classList.remove('active');
+                    if (menuToggle) {
+                        menuToggle.innerHTML = '<i class="fas fa-bars"></i>';
+                    }
+                    document.body.style.overflow = '';
                 }
+                
+                window.scrollTo({
+                    top: targetElement.offsetTop - 80,
+                    behavior: 'smooth'
+                });
             }
-            
-            window.scrollTo({
-                top: targetElement.offsetTop - 80,
-                behavior: 'smooth'
-            });
-        }
-    });
-});
-
-// ======================
-// NAVBAR SCROLL EFFECT
-// ======================
-let lastScroll = 0;
-const navbar = document.querySelector('.navbar');
-
-if (navbar) {
-    window.addEventListener('scroll', () => {
-        const currentScroll = window.pageYOffset;
-        
-        if (currentScroll <= 0) {
-            navbar.style.boxShadow = 'none';
-            navbar.style.transform = 'translateY(0)';
-            return;
-        }
-        
-        if (currentScroll > lastScroll && currentScroll > 100) {
-            navbar.style.transform = 'translateY(-100%)';
-        } else {
-            navbar.style.transform = 'translateY(0)';
-            navbar.style.boxShadow = '0 4px 20px rgba(0, 0, 0, 0.1)';
-        }
-        
-        lastScroll = currentScroll;
+        });
     });
 }
 
 // ======================
-// HOVER EFFECTS
+// NAVBAR SCROLL EFFECT
 // ======================
-function initHoverEffects() {
-    // Cards hover effects
-    document.querySelectorAll('.value-card, .service-card, .stat-card').forEach(card => {
-        card.addEventListener('mouseenter', () => {
-            card.style.transform = 'translateY(-10px)';
+function initNavbarScroll() {
+    let lastScroll = 0;
+    const navbar = document.querySelector('.navbar');
+    
+    if (navbar) {
+        window.addEventListener('scroll', () => {
+            const currentScroll = window.pageYOffset;
+            
+            if (currentScroll <= 0) {
+                navbar.style.boxShadow = 'none';
+                navbar.style.transform = 'translateY(0)';
+                return;
+            }
+            
+            if (currentScroll > lastScroll && currentScroll > 100) {
+                navbar.style.transform = 'translateY(-100%)';
+            } else {
+                navbar.style.transform = 'translateY(0)';
+                navbar.style.boxShadow = '0 4px 20px rgba(0, 0, 0, 0.1)';
+            }
+            
+            lastScroll = currentScroll;
         });
-        
-        card.addEventListener('mouseleave', () => {
-            card.style.transform = 'translateY(0)';
-        });
+    }
+}
+
+// ======================
+// TOUCH DEVICE OPTIMIZATIONS
+// ======================
+function initTouchOptimizations() {
+    // Add touch-friendly classes
+    if ('ontouchstart' in window || navigator.maxTouchPoints) {
+        document.body.classList.add('touch-device');
+    }
+    
+    // Prevent zoom on double tap for buttons
+    document.querySelectorAll('button, .cta-button, .nav-link').forEach(element => {
+        element.addEventListener('touchstart', function(e) {
+            if (e.touches.length > 1) {
+                e.preventDefault();
+            }
+        }, { passive: false });
+    });
+}
+
+// ======================
+// PERFORMANCE OPTIMIZATION
+// ======================
+function initPerformanceOptimizations() {
+    // Pause animations when tab not active
+    document.addEventListener('visibilitychange', () => {
+        const typingCursor = document.querySelector('.typing-cursor');
+        if (document.hidden) {
+            if (typingCursor) {
+                typingCursor.style.animationPlayState = 'paused';
+            }
+            // Pause all CSS animations
+            document.querySelectorAll('*').forEach(el => {
+                const style = window.getComputedStyle(el);
+                if (style.animationPlayState === 'running') {
+                    el.style.animationPlayState = 'paused';
+                }
+            });
+        } else {
+            if (typingCursor) {
+                typingCursor.style.animationPlayState = 'running';
+            }
+            // Resume animations
+            document.querySelectorAll('*').forEach(el => {
+                if (el.style.animationPlayState === 'paused') {
+                    el.style.animationPlayState = 'running';
+                }
+            });
+        }
     });
     
-    // Social links hover effect
-    document.querySelectorAll('.social-link').forEach(link => {
-        link.addEventListener('mouseenter', function() {
-            this.style.transform = 'translateY(-3px) scale(1.1)';
-        });
+    // Debounce resize events
+    let resizeTimeout;
+    window.addEventListener('resize', () => {
+        clearTimeout(resizeTimeout);
+        resizeTimeout = setTimeout(() => {
+            // Handle responsive adjustments
+            if (window.innerWidth > 768 && navLinks && navLinks.classList.contains('active')) {
+                navLinks.classList.remove('active');
+                if (menuToggle) {
+                    menuToggle.innerHTML = '<i class="fas fa-bars"></i>';
+                }
+                document.body.style.overflow = '';
+            }
+        }, 250);
+    });
+}
+
+// ======================
+// KEYBOARD SHORTCUTS
+// ======================
+function initKeyboardShortcuts() {
+    document.addEventListener('keydown', (e) => {
+        // Toggle theme with Alt/Option + T
+        if ((e.altKey || e.metaKey) && e.key === 't') {
+            e.preventDefault();
+            themeToggle.click();
+        }
         
-        link.addEventListener('mouseleave', function() {
-            this.style.transform = 'translateY(0) scale(1)';
-        });
+        // Close mobile menu with Escape
+        if (e.key === 'Escape' && navLinks && navLinks.classList.contains('active')) {
+            navLinks.classList.remove('active');
+            if (menuToggle) {
+                menuToggle.innerHTML = '<i class="fas fa-bars"></i>';
+            }
+            document.body.style.overflow = '';
+        }
+        
+        // Navigate with arrow keys when menu is open
+        if (e.key === 'ArrowDown' || e.key === 'ArrowUp') {
+            if (navLinks && navLinks.classList.contains('active')) {
+                e.preventDefault();
+                const links = document.querySelectorAll('.nav-link');
+                const currentIndex = Array.from(links).indexOf(document.activeElement);
+                
+                if (e.key === 'ArrowDown') {
+                    const nextIndex = (currentIndex + 1) % links.length;
+                    links[nextIndex].focus();
+                } else if (e.key === 'ArrowUp') {
+                    const prevIndex = currentIndex > 0 ? currentIndex - 1 : links.length - 1;
+                    links[prevIndex].focus();
+                }
+            }
+        }
     });
 }
 
@@ -242,11 +334,18 @@ document.addEventListener('DOMContentLoaded', () => {
     
     // Start animations
     setTimeout(startTypingAnimation, 1000);
-    setTimeout(initValuesTyping, 1500);
+    setTimeout(initScrollAnimations, 500);
     setTimeout(initMessageAnimations, 2000);
-    initHoverEffects();
     
-    // Add CSS animations
+    // Initialize all functionality
+    initMobileMenu();
+    initSmoothScroll();
+    initNavbarScroll();
+    initTouchOptimizations();
+    initPerformanceOptimizations();
+    initKeyboardShortcuts();
+    
+    // Add CSS animations dynamically
     const styleSheet = document.createElement('style');
     styleSheet.textContent = `
         @keyframes blink {
@@ -259,6 +358,11 @@ document.addEventListener('DOMContentLoaded', () => {
             50% { transform: translateY(-20px) rotate(5deg); }
         }
         
+        @keyframes floatNodeMobile {
+            0%, 100% { transform: translateY(0) rotate(0deg); }
+            50% { transform: translateY(-15px) rotate(3deg); }
+        }
+        
         @keyframes messageIn {
             from { opacity: 0; transform: translateY(10px); }
             to { opacity: 1; transform: translateY(0); }
@@ -268,66 +372,13 @@ document.addEventListener('DOMContentLoaded', () => {
             0% { transform: translateY(0); opacity: 1; }
             100% { transform: translateY(20px); opacity: 0; }
         }
+        
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
     `;
     document.head.appendChild(styleSheet);
-});
-
-// ======================
-// RESPONSIVE BEHAVIOR
-// ======================
-function handleResponsive() {
-    // Hide AI nodes on mobile
-    const aiNodes = document.querySelectorAll('.ai-node');
-    if (window.innerWidth <= 480) {
-        aiNodes.forEach(node => {
-            node.style.display = 'none';
-        });
-    } else {
-        aiNodes.forEach(node => {
-            node.style.display = 'flex';
-        });
-    }
-}
-
-window.addEventListener('resize', handleResponsive);
-document.addEventListener('DOMContentLoaded', handleResponsive);
-
-// ======================
-// PERFORMANCE OPTIMIZATION
-// ======================
-document.addEventListener('visibilitychange', () => {
-    if (document.hidden) {
-        // Pause animations when tab not active
-        const typingCursor = document.querySelector('.typing-cursor');
-        if (typingCursor) {
-            typingCursor.style.animationPlayState = 'paused';
-        }
-    } else {
-        // Resume animations when tab becomes active
-        const typingCursor = document.querySelector('.typing-cursor');
-        if (typingCursor) {
-            typingCursor.style.animationPlayState = 'running';
-        }
-    }
-});
-
-// ======================
-// KEYBOARD SHORTCUTS
-// ======================
-document.addEventListener('keydown', (e) => {
-    // Toggle theme with Alt/Option + T
-    if ((e.altKey || e.metaKey) && e.key === 't') {
-        e.preventDefault();
-        themeToggle.click();
-    }
-    
-    // Close mobile menu with Escape
-    if (e.key === 'Escape' && navLinks && navLinks.classList.contains('active')) {
-        navLinks.classList.remove('active');
-        if (menuToggle) {
-            menuToggle.innerHTML = '<i class="fas fa-bars"></i>';
-        }
-    }
 });
 
 // ======================
@@ -335,4 +386,10 @@ document.addEventListener('keydown', (e) => {
 // ======================
 window.addEventListener('load', () => {
     document.body.classList.add('loaded');
+    
+    // Remove any loading indicators if present
+    const loader = document.querySelector('.loader');
+    if (loader) {
+        loader.style.display = 'none';
+    }
 });
