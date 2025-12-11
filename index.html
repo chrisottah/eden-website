@@ -1,520 +1,639 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Edenhub | Building Intelligent Solutions</title>
-    <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
-    <link rel="icon" type="image/x-icon" href="images/favicon.ico">
-</head>
-<body class="light-mode">
+    <link rel="stylesheet" href="style.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="icon" type="image/x-icon" href="images/favicon.ico" />
+  </head>
+  <body class="light-mode">
     <!-- Navigation -->
     <nav class="navbar">
-        <div class="nav-container">
-            <div class="logo">
-                <img src="images/logo.png" alt="Edenhub Logo" class="logo-image">
-                <span class="logo-text">Eden<span class="logo-hub">hub</span></span>
-            </div>
-            <div class="nav-links">
-                <a href="#home" class="nav-link">Home</a>
-                <a href="#about" class="nav-link">About</a>
-                <a href="#eden-ai" class="nav-link">Eden AI</a>
-                <a href="#values" class="nav-link">Values</a>
-                <a href="#services" class="nav-link">Services</a>
-            </div>
-            
-            <div class="nav-actions">
-                <button class="theme-toggle" id="themeToggle">
-                    <i class="fas fa-moon"></i>
-                    <i class="fas fa-sun"></i>
-                    <span class="toggle-ball"></span>
-                </button>
-                <a href="https://edenhub.io" target="_blank" class="cta-button nav-button">Try Eden AI</a>
-            </div>
-            
-            <button class="menu-toggle" id="menuToggle">
-                <i class="fas fa-bars"></i>
-            </button>
+      <div class="nav-container">
+        <div class="logo">
+          <img src="images/logo.png" alt="Edenhub Logo" class="logo-image" />
+          <span class="logo-text">Eden<span class="logo-hub">hub</span></span>
         </div>
+        <div class="nav-links">
+          <a href="#home" class="nav-link">Home</a>
+          <a href="#about" class="nav-link">About</a>
+          <a href="#eden-ai" class="nav-link">Eden AI</a>
+          <a href="#values" class="nav-link">Values</a>
+          <a href="#services" class="nav-link">Services</a>
+        </div>
+
+        <div class="nav-actions">
+          <button class="theme-toggle" id="themeToggle">
+            <i class="fas fa-moon"></i>
+            <i class="fas fa-sun"></i>
+            <span class="toggle-ball"></span>
+          </button>
+          <a
+            href="https://edenhub.io"
+            target="_blank"
+            class="cta-button nav-button"
+            >Try Eden AI</a
+          >
+        </div>
+
+        <button class="menu-toggle" id="menuToggle">
+          <i class="fas fa-bars"></i>
+        </button>
+      </div>
     </nav>
 
     <!-- Hero Section -->
     <section class="hero" id="home">
-        <div class="hero-background">
-            <div class="bg-grid"></div>
-            <div class="bg-gradient"></div>
+      <div class="hero-background">
+        <div class="bg-grid"></div>
+        <div class="bg-gradient"></div>
+      </div>
+
+      <div class="hero-container">
+        <div class="hero-content">
+          <div class="main-headline">
+            <h1 class="hero-title">
+              <span class="title-line">Building the Future,</span>
+              <span class="title-line">
+                <span class="typing-container">
+                  <span class="typing-text" id="typingText"></span>
+                  <span class="typing-cursor">|</span>
+                </span>
+              </span>
+            </h1>
+          </div>
+
+          <p class="hero-subtitle">
+            Harnessing the power of responsible AI to create transformative
+            digital solutions that enhance productivity, simplify complexity,
+            and unlock new opportunities.
+          </p>
+
+          <div class="hero-buttons">
+            <a href="#about" class="cta-button primary-button">
+              <i class="fas fa-rocket"></i>
+              Explore Edenhub
+            </a>
+            <a href="#eden-ai" class="cta-button secondary-button">
+              <i class="fas fa-robot"></i>
+              Meet Eden AI
+            </a>
+          </div>
         </div>
-        
-        <div class="hero-container">
-            <div class="hero-content">
-                <div class="main-headline">
-                    <h1 class="hero-title">
-                        <span class="title-line">Building the Future,</span>
-                        <span class="title-line">
-                            <span class="typing-container">
-                                <span class="typing-text" id="typingText"></span>
-                                <span class="typing-cursor">|</span>
-                            </span>
-                        </span>
-                    </h1>
-                </div>
-                
-                <p class="hero-subtitle">
-                    Harnessing the power of responsible AI to create transformative digital solutions that enhance productivity, simplify complexity, and unlock new opportunities.
-                </p>
-                
-                <div class="hero-buttons">
-                    <a href="#about" class="cta-button primary-button">
-                        <i class="fas fa-rocket"></i>
-                        Explore Edenhub
-                    </a>
-                    <a href="#eden-ai" class="cta-button secondary-button">
-                        <i class="fas fa-robot"></i>
-                        Meet Eden AI
-                    </a>
-                </div>
+
+        <div class="hero-visual">
+          <div class="ai-visualization">
+            <div class="ai-node node-1">
+              <i class="fas fa-brain"></i>
+              <span class="node-label">Ethical AI</span>
             </div>
-            
-            <div class="hero-visual">
-                <div class="ai-visualization">
-                    <div class="ai-node node-1">
-                        <i class="fas fa-brain"></i>
-                        <span class="node-label">Ethical AI</span>
-                    </div>
-                    <div class="ai-node node-2">
-                        <i class="fas fa-cogs"></i>
-                        <span class="node-label">Automation</span>
-                    </div>
-                    <div class="ai-node node-3">
-                        <i class="fas fa-shield-alt"></i>
-                        <span class="node-label">Security</span>
-                    </div>
-                    <div class="ai-node node-4">
-                        <i class="fas fa-users"></i>
-                        <span class="node-label">Human-Centered</span>
-                    </div>
-                    <div class="ai-node node-5">
-                        <i class="fas fa-chart-line"></i>
-                        <span class="node-label">Scalability</span>
-                    </div>
-                    <div class="connecting-lines"></div>
-                </div>
+            <div class="ai-node node-2">
+              <i class="fas fa-cogs"></i>
+              <span class="node-label">Automation</span>
             </div>
+            <div class="ai-node node-3">
+              <i class="fas fa-shield-alt"></i>
+              <span class="node-label">Security</span>
+            </div>
+            <div class="ai-node node-4">
+              <i class="fas fa-users"></i>
+              <span class="node-label">Human-Centered</span>
+            </div>
+            <div class="ai-node node-5">
+              <i class="fas fa-chart-line"></i>
+              <span class="node-label">Scalability</span>
+            </div>
+            <div class="connecting-lines"></div>
+          </div>
         </div>
-        
-        <div class="scroll-indicator">
-            <div class="mouse">
-                <div class="wheel"></div>
-            </div>
-            <span>Scroll to explore</span>
+      </div>
+
+      <div class="scroll-indicator">
+        <div class="mouse">
+          <div class="wheel"></div>
         </div>
+        <span>Scroll to explore</span>
+      </div>
     </section>
 
     <!-- About Section -->
     <section class="about" id="about">
-        <div class="section-container">
-            <div class="section-header">
-                <h2 class="section-title">About Edenhub</h2>
-                <p class="section-subtitle">Eden Incubators Ltd. — Founded 2025</p>
-            </div>
-            
-            <div class="about-content">
-                <div class="about-text">
-                    <p class="about-paragraph">
-                        Edenhub is a forward-thinking technology organization dedicated to harnessing the power of neo technology and responsible artificial intelligence to create customized, scalable, and transformative digital solutions.
-                    </p>
-                    
-                    <p class="about-paragraph">
-                        We exist to make life easier for people and businesses by designing tools that enhance productivity, simplify complexity, and unlock new opportunities in an increasingly automated world.
-                    </p>
-                    
-                    <div class="mission-vision-grid">
-                        <div class="mission-card">
-                            <div class="mv-icon">
-                                <i class="fas fa-bullseye"></i>
-                            </div>
-                            <h3>Mission</h3>
-                            <p>To create ethical, innovative, and scalable AI-powered solutions that simplify work, enhance human capability, and support global growth in the era of intelligent automation.</p>
-                        </div>
-                        
-                        <div class="vision-card">
-                            <div class="mv-icon">
-                                <i class="fas fa-eye"></i>
-                            </div>
-                            <h3>Vision</h3>
-                            <p>To become a global leader in responsible AI development — shaping a future where technology amplifies human potential, strengthens communities, and inspires meaningful progress.</p>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="about-stats">
-                    <div class="stat-card">
-                        <div class="stat-icon">
-                            <i class="fas fa-calendar"></i>
-                        </div>
-                        <div class="stat-content">
-                            <span class="stat-number">2025</span>
-                            <span class="stat-label">Founded</span>
-                        </div>
-                    </div>
-                    
-                    <div class="stat-card">
-                        <div class="stat-icon">
-                            <i class="fas fa-industry"></i>
-                        </div>
-                        <div class="stat-content">
-                            <span class="stat-text">AI & Digital Innovation</span>
-                            <span class="stat-label">Industry</span>
-                        </div>
-                    </div>
-                    
-                    <div class="stat-card">
-                        <div class="stat-icon">
-                            <i class="fas fa-flag"></i>
-                        </div>
-                        <div class="stat-content">
-                            <span class="stat-text">Human-Centered Solutions</span>
-                            <span class="stat-label">Primary Focus</span>
-                        </div>
-                    </div>
-                    
-                    <div class="stat-card">
-                        <div class="stat-icon">
-                            <i class="fas fa-users"></i>
-                        </div>
-                        <div class="stat-content">
-                            <span class="stat-text">SMEs, Enterprises, Creators</span>
-                            <span class="stat-label">Target Clients</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
+      <div class="section-container">
+        <div class="section-header">
+          <h2 class="section-title">About Edenhub</h2>
+          <p class="section-subtitle">Eden Incubators Ltd. — Founded 2025</p>
         </div>
+
+        <div class="about-content">
+          <div class="about-text">
+            <p class="about-paragraph">
+              Edenhub is a forward-thinking technology organization dedicated to
+              harnessing the power of neo technology and responsible artificial
+              intelligence to create customized, scalable, and transformative
+              digital solutions.
+            </p>
+
+            <p class="about-paragraph">
+              We exist to make life easier for people and businesses by
+              designing tools that enhance productivity, simplify complexity,
+              and unlock new opportunities in an increasingly automated world.
+            </p>
+
+            <div class="mission-vision-grid">
+              <div class="mission-card">
+                <div class="mv-icon">
+                  <i class="fas fa-bullseye"></i>
+                </div>
+                <h3>Mission</h3>
+                <p>
+                  To create ethical, innovative, and scalable AI-powered
+                  solutions that simplify work, enhance human capability, and
+                  support global growth in the era of intelligent automation.
+                </p>
+              </div>
+
+              <div class="vision-card">
+                <div class="mv-icon">
+                  <i class="fas fa-eye"></i>
+                </div>
+                <h3>Vision</h3>
+                <p>
+                  To become a global leader in responsible AI development —
+                  shaping a future where technology amplifies human potential,
+                  strengthens communities, and inspires meaningful progress.
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <div class="about-stats">
+            <div class="stat-card">
+              <div class="stat-icon">
+                <i class="fas fa-calendar"></i>
+              </div>
+              <div class="stat-content">
+                <span class="stat-number">2025</span>
+                <span class="stat-label">Founded</span>
+              </div>
+            </div>
+
+            <div class="stat-card">
+              <div class="stat-icon">
+                <i class="fas fa-industry"></i>
+              </div>
+              <div class="stat-content">
+                <span class="stat-text">AI & Digital Innovation</span>
+                <span class="stat-label">Industry</span>
+              </div>
+            </div>
+
+            <div class="stat-card">
+              <div class="stat-icon">
+                <i class="fas fa-flag"></i>
+              </div>
+              <div class="stat-content">
+                <span class="stat-text">Human-Centered Solutions</span>
+                <span class="stat-label">Primary Focus</span>
+              </div>
+            </div>
+
+            <div class="stat-card">
+              <div class="stat-icon">
+                <i class="fas fa-users"></i>
+              </div>
+              <div class="stat-content">
+                <span class="stat-text">SMEs, Enterprises, Creators</span>
+                <span class="stat-label">Target Clients</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
     </section>
 
     <!-- Core Values Section -->
     <section class="values" id="values">
-        <div class="section-container">
-            <div class="section-header">
-                <h2 class="section-title">Our Core Values</h2>
-                <p class="section-subtitle">The principles that guide everything we build</p>
-            </div>
-            
-            <div class="values-grid">
-                <div class="value-card">
-                    <div class="value-icon">
-                        <i class="fas fa-user-circle"></i>
-                    </div>
-                    <h3 class="value-title">Human-Centered Innovation</h3>
-                    <p class="value-description fade-in">Technology exists to serve people.</p>
-                </div>
-                
-                <div class="value-card">
-                    <div class="value-icon">
-                        <i class="fas fa-balance-scale"></i>
-                    </div>
-                    <h3 class="value-title">Ethics First</h3>
-                    <p class="value-description fade-in">Privacy, transparency, and accountability in every solution.</p>
-                </div>
-                
-                <div class="value-card">
-                    <div class="value-icon">
-                        <i class="fas fa-expand-arrows-alt"></i>
-                    </div>
-                    <h3 class="value-title">Scalability & Sustainability</h3>
-                    <p class="value-description fade-in">Built for growth, designed for longevity.</p>
-                </div>
-                
-                <div class="value-card">
-                    <div class="value-icon">
-                        <i class="fas fa-lightbulb"></i>
-                    </div>
-                    <h3 class="value-title">Creativity & Curiosity</h3>
-                    <p class="value-description fade-in">We explore, challenge, and experiment boldly.</p>
-                </div>
-                
-                <div class="value-card">
-                    <div class="value-icon">
-                        <i class="fas fa-handshake"></i>
-                    </div>
-                    <h3 class="value-title">Trust & Integrity</h3>
-                    <p class="value-description fade-in">We build with honesty and stand behind our work.</p>
-                </div>
-                
-                <div class="value-card">
-                    <div class="value-icon">
-                        <i class="fas fa-network-wired"></i>
-                    </div>
-                    <h3 class="value-title">Collaboration</h3>
-                    <p class="value-description fade-in">We grow with our partners, clients, and users.</p>
-                </div>
-            </div>
+      <div class="section-container">
+        <div class="section-header">
+          <h2 class="section-title">Our Core Values</h2>
+          <p class="section-subtitle">
+            The principles that guide everything we build
+          </p>
         </div>
+
+        <div class="values-grid">
+          <div class="value-card">
+            <div class="value-icon">
+              <i class="fas fa-user-circle"></i>
+            </div>
+            <h3 class="value-title">Human-Centered Innovation</h3>
+            <p class="value-description fade-in">
+              Technology exists to serve people.
+            </p>
+          </div>
+
+          <div class="value-card">
+            <div class="value-icon">
+              <i class="fas fa-balance-scale"></i>
+            </div>
+            <h3 class="value-title">Ethics First</h3>
+            <p class="value-description fade-in">
+              Privacy, transparency, and accountability in every solution.
+            </p>
+          </div>
+
+          <div class="value-card">
+            <div class="value-icon">
+              <i class="fas fa-expand-arrows-alt"></i>
+            </div>
+            <h3 class="value-title">Scalability & Sustainability</h3>
+            <p class="value-description fade-in">
+              Built for growth, designed for longevity.
+            </p>
+          </div>
+
+          <div class="value-card">
+            <div class="value-icon">
+              <i class="fas fa-lightbulb"></i>
+            </div>
+            <h3 class="value-title">Creativity & Curiosity</h3>
+            <p class="value-description fade-in">
+              We explore, challenge, and experiment boldly.
+            </p>
+          </div>
+
+          <div class="value-card">
+            <div class="value-icon">
+              <i class="fas fa-handshake"></i>
+            </div>
+            <h3 class="value-title">Trust & Integrity</h3>
+            <p class="value-description fade-in">
+              We build with honesty and stand behind our work.
+            </p>
+          </div>
+
+          <div class="value-card">
+            <div class="value-icon">
+              <i class="fas fa-network-wired"></i>
+            </div>
+            <h3 class="value-title">Collaboration</h3>
+            <p class="value-description fade-in">
+              We grow with our partners, clients, and users.
+            </p>
+          </div>
+        </div>
+      </div>
     </section>
 
     <!-- Services Section -->
     <section class="services" id="services">
-        <div class="section-container">
-            <div class="section-header">
-                <h2 class="section-title">What We Do</h2>
-                <p class="section-subtitle">Comprehensive AI and digital solutions</p>
-            </div>
-            
-            <div class="services-grid">
-                <div class="service-card">
-                    <div class="service-icon">
-                        <i class="fas fa-robot"></i>
-                    </div>
-                    <h3>Custom AI Solutions</h3>
-                    <p>Tailored assistants, automation systems, and intelligent workflows for business, creators, and industry.</p>
-                </div>
-                
-                <div class="service-card">
-                    <div class="service-icon">
-                        <i class="fas fa-code"></i>
-                    </div>
-                    <h3>Digital Product Development</h3>
-                    <p>From concept to launch — web apps, mobile apps, and cloud platforms built for scale.</p>
-                </div>
-                
-                <div class="service-card">
-                    <div class="service-icon">
-                        <i class="fas fa-cogs"></i>
-                    </div>
-                    <h3>AI-Driven Process Automation</h3>
-                    <p>Reduce manual work, remove inefficiency, and unlock higher output with reliable automation.</p>
-                </div>
-                
-                <div class="service-card">
-                    <div class="service-icon">
-                        <i class="fas fa-handshake"></i>
-                    </div>
-                    <h3>Ethical Technology Consulting</h3>
-                    <p>Helping organizations adopt emerging tech responsibly, sustainably, and securely.</p>
-                </div>
-                
-                <div class="service-card">
-                    <div class="service-icon">
-                        <i class="fas fa-database"></i>
-                    </div>
-                    <h3>Machine Learning & Data Intelligence</h3>
-                    <p>Insight-driven decision making powered by predictive analytics and smart data models.</p>
-                </div>
-                
-                <div class="service-card">
-                    <div class="service-icon">
-                        <i class="fas fa-user-tie"></i>
-                    </div>
-                    <h3>Business Model Innovation</h3>
-                    <p>SaaS, Custom Solutions, AI-Integration Services for SMEs, Enterprises, NGOs, and Tech Startups.</p>
-                </div>
-            </div>
+      <div class="section-container">
+        <div class="section-header">
+          <h2 class="section-title">What We Do</h2>
+          <p class="section-subtitle">Comprehensive AI and digital solutions</p>
         </div>
+
+        <div class="services-grid">
+          <div class="service-card">
+            <div class="service-icon">
+              <i class="fas fa-robot"></i>
+            </div>
+            <h3>Custom AI Solutions</h3>
+            <p>
+              Tailored assistants, automation systems, and intelligent workflows
+              for business, creators, and industry.
+            </p>
+          </div>
+
+          <div class="service-card">
+            <div class="service-icon">
+              <i class="fas fa-code"></i>
+            </div>
+            <h3>Digital Product Development</h3>
+            <p>
+              From concept to launch — web apps, mobile apps, and cloud
+              platforms built for scale.
+            </p>
+          </div>
+
+          <div class="service-card">
+            <div class="service-icon">
+              <i class="fas fa-cogs"></i>
+            </div>
+            <h3>AI-Driven Process Automation</h3>
+            <p>
+              Reduce manual work, remove inefficiency, and unlock higher output
+              with reliable automation.
+            </p>
+          </div>
+
+          <div class="service-card">
+            <div class="service-icon">
+              <i class="fas fa-handshake"></i>
+            </div>
+            <h3>Ethical Technology Consulting</h3>
+            <p>
+              Helping organizations adopt emerging tech responsibly,
+              sustainably, and securely.
+            </p>
+          </div>
+
+          <div class="service-card">
+            <div class="service-icon">
+              <i class="fas fa-database"></i>
+            </div>
+            <h3>Machine Learning & Data Intelligence</h3>
+            <p>
+              Insight-driven decision making powered by predictive analytics and
+              smart data models.
+            </p>
+          </div>
+
+          <div class="service-card">
+            <div class="service-icon">
+              <i class="fas fa-user-tie"></i>
+            </div>
+            <h3>Business Model Innovation</h3>
+            <p>
+              SaaS, Custom Solutions, AI-Integration Services for SMEs,
+              Enterprises, NGOs, and Tech Startups.
+            </p>
+          </div>
+        </div>
+      </div>
     </section>
 
     <!-- Eden AI Product Section -->
     <section class="eden-ai-product" id="eden-ai">
-        <div class="section-container">
-            <div class="section-header">
-                <h2 class="section-title">Eden AI</h2>
-                <p class="section-subtitle">Our flagship intelligent assistant</p>
-            </div>
-            
-            <div class="product-showcase">
-                <div class="product-content">
-                    <div class="product-badge">
-                        <span class="badge-text">Flagship Product</span>
-                    </div>
-                    
-                    <h3 class="product-tagline">More than a chatbot — <span class="highlight">It's your personalized AI companion</span></h3>
-                    
-                    <p class="product-description">
-                        Eden AI is our customizable intelligent assistant built to simplify communication, customer support, task execution, and content creation. Designed with conversational intelligence, workflow automation capabilities, and ethical AI principles.
-                    </p>
-                    
-                    <div class="product-features">
-                        <div class="feature">
-                            <i class="fas fa-check-circle"></i>
-                            <span>Conversational Intelligence</span>
-                        </div>
-                        <div class="feature">
-                            <i class="fas fa-check-circle"></i>
-                            <span>Workflow Automation</span>
-                        </div>
-                        <div class="feature">
-                            <i class="fas fa-check-circle"></i>
-                            <span>Task Execution</span>
-                        </div>
-                        <div class="feature">
-                            <i class="fas fa-check-circle"></i>
-                            <span>Content Creation</span>
-                        </div>
-                    </div>
-                    
-                    <div class="app-downloads">
-                        <h4>Available on</h4>
-                        <div class="app-buttons">
-                            <a href="#" class="app-store-button">
-                                <i class="fab fa-apple"></i>
-                                <div class="button-text">
-                                    <span class="small-text">Download on the</span>
-                                    <span class="large-text">App Store</span>
-                                </div>
-                            </a>
-                            
-                            <a href="#" class="play-store-button">
-                                <i class="fab fa-google-play"></i>
-                                <div class="button-text">
-                                    <span class="small-text">Get it on</span>
-                                    <span class="large-text">Google Play</span>
-                                </div>
-                            </a>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="product-visual">
-                    <div class="ai-interface-preview">
-                        <div class="interface-header">
-                            <div class="interface-dots">
-                                <span class="interface-dot red"></span>
-                                <span class="interface-dot yellow"></span>
-                                <span class="interface-dot green"></span>
-                            </div>
-                            <span class="interface-title">Eden AI Assistant</span>
-                        </div>
-                        <div class="interface-content">
-                            <div class="message user-message">
-                                <div class="avatar">U</div>
-                                <div class="text">Can you help me automate my daily reports?</div>
-                            </div>
-                            <div class="message ai-message">
-                                <div class="avatar">E</div>
-                                <div class="text">Absolutely! I can create an automated workflow that compiles your daily reports from multiple sources and sends them via email at 5 PM daily. Shall I set this up?</div>
-                            </div>
-                            <div class="typing-indicator">
-                                <span>Eden AI is typing...</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            
-            <div class="problem-solution">
-                <div class="problem">
-                    <h3><i class="fas fa-exclamation-triangle"></i> The Problem We Solve</h3>
-                    <p>Technology is advancing faster than people can keep up. Businesses struggle with automation, individuals feel overwhelmed, and organizations lack ethical guidance for adopting AI.</p>
-                </div>
-                
-                <div class="solution">
-                    <h3><i class="fas fa-lightbulb"></i> Our Solution</h3>
-                    <p>People need <strong>AI they can trust — and technology they can understand.</strong> Eden AI provides ethical, transparent, and user-friendly intelligent assistance.</p>
-                </div>
-            </div>
+      <div class="section-container">
+        <div class="section-header">
+          <h2 class="section-title">Eden AI</h2>
+          <p class="section-subtitle">Our flagship intelligent assistant</p>
         </div>
+
+        <div class="product-showcase">
+          <div class="product-content">
+            <div class="product-badge">
+              <span class="badge-text">Flagship Product</span>
+            </div>
+
+            <h3 class="product-tagline">
+              More than a chatbot —
+              <span class="highlight">It's your personalized AI companion</span>
+            </h3>
+
+            <p class="product-description">
+              Eden AI is our customizable intelligent assistant built to
+              simplify communication, customer support, task execution, and
+              content creation. Designed with conversational intelligence,
+              workflow automation capabilities, and ethical AI principles.
+            </p>
+
+            <div class="product-features">
+              <div class="feature">
+                <i class="fas fa-check-circle"></i>
+                <span>Conversational Intelligence</span>
+              </div>
+              <div class="feature">
+                <i class="fas fa-check-circle"></i>
+                <span>Workflow Automation</span>
+              </div>
+              <div class="feature">
+                <i class="fas fa-check-circle"></i>
+                <span>Task Execution</span>
+              </div>
+              <div class="feature">
+                <i class="fas fa-check-circle"></i>
+                <span>Content Creation</span>
+              </div>
+            </div>
+
+            <div class="app-downloads">
+              <h4>Available on</h4>
+              <div class="app-buttons">
+                <a href="#" class="app-store-button">
+                  <i class="fab fa-apple"></i>
+                  <div class="button-text">
+                    <span class="small-text">Download on the</span>
+                    <span class="large-text">App Store</span>
+                  </div>
+                </a>
+
+                <a href="#" class="play-store-button">
+                  <i class="fab fa-google-play"></i>
+                  <div class="button-text">
+                    <span class="small-text">Get it on</span>
+                    <span class="large-text">Google Play</span>
+                  </div>
+                </a>
+              </div>
+            </div>
+          </div>
+
+          <div class="product-visual">
+            <div class="ai-interface-preview">
+              <div class="interface-header">
+                <div class="interface-dots">
+                  <span class="interface-dot red"></span>
+                  <span class="interface-dot yellow"></span>
+                  <span class="interface-dot green"></span>
+                </div>
+                <span class="interface-title">Eden AI Assistant</span>
+              </div>
+              <div class="interface-content">
+                <div class="message user-message">
+                  <div class="avatar">U</div>
+                  <div class="text">
+                    Can you help me automate my daily reports?
+                  </div>
+                </div>
+                <div class="message ai-message">
+                  <div class="avatar">E</div>
+                  <div class="text">
+                    Absolutely! I can create an automated workflow that compiles
+                    your daily reports from multiple sources and sends them via
+                    email at 5 PM daily. Shall I set this up?
+                  </div>
+                </div>
+                <div class="typing-indicator">
+                  <span>Eden AI is typing...</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="problem-solution">
+          <div class="problem">
+            <h3>
+              <i class="fas fa-exclamation-triangle"></i> The Problem We Solve
+            </h3>
+            <p>
+              Technology is advancing faster than people can keep up. Businesses
+              struggle with automation, individuals feel overwhelmed, and
+              organizations lack ethical guidance for adopting AI.
+            </p>
+          </div>
+
+          <div class="solution">
+            <h3><i class="fas fa-lightbulb"></i> Our Solution</h3>
+            <p>
+              People need
+              <strong
+                >AI they can trust — and technology they can understand.</strong
+              >
+              Eden AI provides ethical, transparent, and user-friendly
+              intelligent assistance.
+            </p>
+          </div>
+        </div>
+      </div>
     </section>
 
     <!-- CTA Section -->
     <section class="cta-section">
-        <div class="section-container">
-            <div class="cta-content">
-                <h2 class="cta-title">Ready to Build the Future Together?</h2>
-                <p class="cta-subtitle">
-                    Join organizations and individuals transforming their workflow with ethical, intelligent solutions.
-                </p>
-                <div class="cta-buttons">
-                    <a href="https://edenhub.io" target="_blank" class="cta-button primary-button large-button">
-                        <i class="fas fa-terminal"></i>
-                        Start with Eden AI
-                    </a>
-                    <a href="#contact" class="cta-button secondary-button large-button">
-                        <i class="fas fa-envelope"></i>
-                        Contact Our Team
-                    </a>
-                </div>
-            </div>
+      <div class="section-container">
+        <div class="cta-content">
+          <h2 class="cta-title">Ready to Build the Future Together?</h2>
+          <p class="cta-subtitle">
+            Join organizations and individuals transforming their workflow with
+            ethical, intelligent solutions.
+          </p>
+          <div class="cta-buttons">
+            <a
+              href="https://edenhub.io"
+              target="_blank"
+              class="cta-button primary-button large-button"
+            >
+              <i class="fas fa-terminal"></i>
+              Start with Eden AI
+            </a>
+            <a href="#contact" class="cta-button secondary-button large-button">
+              <i class="fas fa-envelope"></i>
+              Contact Our Team
+            </a>
+          </div>
         </div>
+      </div>
     </section>
 
     <!-- Footer -->
     <footer class="footer" id="contact">
-        <div class="footer-container">
-            <div class="footer-main">
-                <div class="footer-brand">
-                    <div class="logo">
-                        <div class="logo-icon">
-                            <i class="fas fa-seedling"></i>
-                        </div>
-                        <span class="logo-text">Eden<span class="logo-hub">hub</span></span>
-                    </div>
-                    <p class="footer-tagline">
-                        Building the Future, One Intelligent Solution at a Time.
-                    </p>
-                    <div class="social-links">
-                        <a href="https://kingschat.online" target="_blank" class="social-link" title="KingsChat">
-                            <i class="fas fa-comment"></i>
-                        </a>
-                        <a href="https://github.com" target="_blank" class="social-link" title="GitHub">
-                            <i class="fab fa-github"></i>
-                        </a>
-                        <a href="https://x.com" target="_blank" class="social-link" title="X (Twitter)">
-                            <i class="fab fa-x-twitter"></i>
-                        </a>
-                        <a href="https://facebook.com" target="_blank" class="social-link" title="Facebook">
-                            <i class="fab fa-facebook-f"></i>
-                        </a>
-                        <a href="mailto:info@edenhub.io" class="social-link" title="Email">
-                            <i class="fas fa-envelope"></i>
-                        </a>
-                        <a href="https://discord.com" target="_blank" class="social-link" title="Discord">
-                            <i class="fab fa-discord"></i>
-                        </a>
-                    </div>
-                </div>
-                
-                <div class="footer-links">
-                    <div class="footer-column">
-                        <h4 class="footer-column-title">Company</h4>
-                        <a href="#about" class="footer-link">About Us</a>
-                        <a href="#values" class="footer-link">Our Values</a>
-                        <a href="#services" class="footer-link">Services</a>
-                        <a href="#eden-ai" class="footer-link">Eden AI</a>
-                    </div>
-                    
-                    <div class="footer-column">
-                        <h4 class="footer-column-title">Business</h4>
-                        <a href="#" class="footer-link">For Enterprises</a>
-                        <a href="#" class="footer-link">For SMEs</a>
-                        <a href="#" class="footer-link">For Creators</a>
-                        <a href="#" class="footer-link">Consulting</a>
-                    </div>
-                    
-                    <div class="footer-column">
-                        <h4 class="footer-column-title">Resources</h4>
-                        <a href="#" class="footer-link">Documentation</a>
-                        <a href="#" class="footer-link">Blog</a>
-                        <a href="#" class="footer-link">Support</a>
-                        <a href="#" class="footer-link">Privacy Policy</a>
-                    </div>
-                </div>
+      <div class="footer-container">
+        <div class="footer-main">
+          <div class="footer-brand">
+            <div class="logo">
+              <div class="logo-icon">
+                <i class="fas fa-seedling"></i>
+              </div>
+              <span class="logo-text"
+                >Eden<span class="logo-hub">hub</span></span
+              >
             </div>
-            
-            <div class="footer-bottom">
-                <div class="footer-info">
-                    <p><strong>Eden Incubators Ltd.</strong> — Founded 2025</p>
-                    <p>Industry: Artificial Intelligence & Digital Innovation</p>
-                    <p>Primary Focus: Ethical AI, Custom Scalable Solutions</p>
-                </div>
-                
-                <div class="footer-copyright">
-                    <p>&copy; 2024-2025 Edenhub. All rights reserved.</p>
-                </div>
+            <p class="footer-tagline">
+              Building the Future, One Intelligent Solution at a Time.
+            </p>
+            <div class="social-links">
+              <a
+                href="https://kingschat.online"
+                target="_blank"
+                class="social-link"
+                title="KingsChat"
+              >
+                <i class="fas fa-comment"></i>
+              </a>
+              <a
+                href="https://github.com"
+                target="_blank"
+                class="social-link"
+                title="GitHub"
+              >
+                <i class="fab fa-github"></i>
+              </a>
+              <a
+                href="https://x.com/edenincubators"
+                target="_blank"
+                class="social-link"
+                title="X (Twitter)"
+              >
+                <i class="fa-brands fa-x-twitter"></i>
+              </a>
+              <a
+                href="https://facebook.com"
+                target="_blank"
+                class="social-link"
+                title="Facebook"
+              >
+                <i class="fab fa-facebook-f"></i>
+              </a>
+              <a
+                href="mailto:info@edenhub.io"
+                class="social-link"
+                title="Email"
+              >
+                <i class="fas fa-envelope"></i>
+              </a>
+              <a
+                href="https://discord.com"
+                target="_blank"
+                class="social-link"
+                title="Discord"
+              >
+                <i class="fab fa-discord"></i>
+              </a>
             </div>
+          </div>
+
+          <div class="footer-links">
+            <div class="footer-column">
+              <h4 class="footer-column-title">Company</h4>
+              <a href="#about" class="footer-link">About Us</a>
+              <a href="#values" class="footer-link">Our Values</a>
+              <a href="#services" class="footer-link">Services</a>
+              <a href="#eden-ai" class="footer-link">Eden AI</a>
+            </div>
+
+            <div class="footer-column">
+              <h4 class="footer-column-title">Business</h4>
+              <a href="#" class="footer-link">For Enterprises</a>
+              <a href="#" class="footer-link">For SMEs</a>
+              <a href="#" class="footer-link">For Creators</a>
+              <a href="#" class="footer-link">Consulting</a>
+            </div>
+
+            <div class="footer-column">
+              <h4 class="footer-column-title">Resources</h4>
+              <a href="#" class="footer-link">Documentation</a>
+              <a href="#" class="footer-link">Blog</a>
+              <a href="#" class="footer-link">Support</a>
+              <a href="#" class="footer-link">Privacy Policy</a>
+            </div>
+          </div>
         </div>
+
+        <div class="footer-bottom">
+          <div class="footer-info">
+            <p><strong>Eden Incubators Ltd.</strong> — Founded 2025</p>
+            <p>Industry: Artificial Intelligence & Digital Innovation</p>
+            <p>Primary Focus: Ethical AI, Custom Scalable Solutions</p>
+          </div>
+
+          <div class="footer-copyright">
+            <p>&copy; 2024-2025 Edenhub. All rights reserved.</p>
+          </div>
+        </div>
+      </div>
     </footer>
 
     <script src="script.js"></script>
-</body>
+  </body>
 </html>
