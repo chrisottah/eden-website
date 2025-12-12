@@ -35,7 +35,7 @@ body {
     --shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.05);
     --shadow-lg: 0 20px 40px -10px rgba(0, 0, 0, 0.08);
     --gradient: linear-gradient(135deg, #3b82f6 0%, #60a5fa 100%);
-    --gradient-green: linear-gradient(135deg, #10b981 0%, #34d399 100%);
+    --gradient-green: linear-gradient(135deg, #147fe5 0%, #147fe5 100%);
 }
 
 .dark-mode {
@@ -54,7 +54,7 @@ body {
     --shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.3);
     --shadow-lg: 0 20px 40px -10px rgba(0, 0, 0, 0.4);
     --gradient: linear-gradient(135deg, #60a5fa 0%, #3b82f6 100%);
-    --gradient-green: linear-gradient(135deg, #34d399 0%, #10b981 100%);
+    --gradient-green: linear-gradient(135deg, #147fe5 0%, #147fe5 100%);
 }
 
 .container {
@@ -949,7 +949,7 @@ section {
 
 .interface-dot.red { background: #ff5f57; }
 .interface-dot.yellow { background: #ffbd2e; }
-.interface-dot.green { background: #28ca42; }
+.interface-dot.green { background: #147fe5; }
 
 .interface-title {
     font-weight: 600;
