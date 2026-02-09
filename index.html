@@ -10,11 +10,10 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <!-- Header -->
     <header>
         <div class="header-content">
             <div class="logo">EDENHUB</div>
-            <nav>
+            <nav id="mainNav">
                 <a href="#about">About</a>
                 <a href="#services">Services</a>
                 <a href="#product">Product</a>
@@ -33,11 +32,16 @@
                     </svg>
                 </button>
             </nav>
+            <button class="mobile-menu-toggle" id="menuToggle" aria-label="Open menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
         </div>
     </header>
 
-    <!-- Hero Section -->
     <section class="hero">
+        <canvas id="techCanvas"></canvas>
         <div class="hero-content">
             <h1 class="hero-title" id="heroTitle"></h1>
             <p class="hero-subtitle" id="heroSubtitle"></p>
@@ -50,7 +54,6 @@
         </div>
     </section>
 
-    <!-- About Section -->
     <section class="section" id="about">
         <h2 class="section-title">Who We Are</h2>
         <p class="section-subtitle">
@@ -61,7 +64,6 @@
         </p>
     </section>
 
-    <!-- Services Section -->
     <section class="section" id="services">
         <h2 class="section-title">What We Do</h2>
         <div class="services-grid">
@@ -89,7 +91,6 @@
         </div>
     </section>
 
-    <!-- Product Section -->
     <section class="section" id="product">
         <h2 class="section-title">Our Flagship Product</h2>
         <div class="product-showcase">
@@ -109,7 +110,6 @@
         </div>
     </section>
 
-    <!-- Contact Section -->
     <section class="section" id="contact">
         <h2 class="section-title">Get In Touch</h2>
         <div class="contact-grid">
@@ -158,7 +158,6 @@
         </div>
     </section>
 
-    <!-- Footer -->
     <footer>
         <p>&copy; 2026 Edenhub. Building the future, one intelligent solution at a time.</p>
     </footer>
